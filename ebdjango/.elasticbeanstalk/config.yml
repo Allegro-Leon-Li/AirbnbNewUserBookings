@@ -1,0 +1,13 @@
+branch-defaults:
+  default:
+    environment: django-env
+    group_suffix: null
+global:
+  application_name: ec601_trip
+  branch: null
+  default_ec2_keyname: aws-eb
+  default_platform: Python 3.4
+  default_region: us-east-1
+  profile: eb-cli
+  repository: null
+  sc: null
