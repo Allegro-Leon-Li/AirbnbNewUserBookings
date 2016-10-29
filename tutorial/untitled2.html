@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>jQuery Ajax Demo</title>
+
+<style type="text/css"> 
+input, button, select {
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>查詢員工</h1>
+<label for="keyword">請輸入員工編號：</label>
+<input type="text" id="keyword">
+
+<button id="search">查詢</button>
+<p id="searchResult"></p>
+
+<h1>新建員工</h1>
+<label for="staffNumber">請輸入員工編號：</label>
+<input type="text" id="staffNumber"><br>
+
+<label for="staffName">請輸入員工姓名：</label>
+<input type="text" id="staffName"><br>
+
+<label for="staffSex">請輸入員工性別：</label>
+<select id="staffSex">
+    <option value="男">男</option>
+    <option value="女">女</option>
+</select><br>
+
+<button id="save">保存</button>
+<p id="createResult"></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/JavaScript">
+$(document).ready(function() {
+    $("#search").click(function() {
+        $.ajax({
+            type: "GET",
+            url: "service.php?number= " + $("#keyword").val(),
+            dataType: "json",
+            success: function(data) {
+                if (data.number) {
+                    $("#searchResult").html(
+                        '[找到員工] 員工編號：' +data.number + ', 姓名：' + data.name + ', 性別：' + data.sex
+                    );
+                } else {
+                    $("#searchResult").html(data.msg);
+                }
+            },
+            error: function(jqXHR) {
+                alert("發生錯誤: " + jqXHR.status);
+            }
+        })
+    })
+
+    $("#save").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "service.php",
+            dataType: "json",
+            data: {
+                name: $("#staffName").val(),
+                number: $("#staffNumber").val(),
+                sex: $("#staffSex").val()               
+            },
+            success: function(data) {
+                if (data.name) {
+                    $("#createResult").html('員工：' + data.name + '，儲存成功！');
+                } else {
+                    $("#createResult").html(data.msg);
+                }                   
+            },
+            error: function(jqXHR) {
+                alert("發生錯誤: " + jqXHR.status);
+            }
+        })
+    })
+});
+</script>
+
+</body>
+</html>
