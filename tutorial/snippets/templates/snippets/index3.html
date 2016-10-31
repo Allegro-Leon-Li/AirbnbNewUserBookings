@@ -1,0 +1,33 @@
+<html>
+<head>
+    Test
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+var formData = JSON.stringify($("#myForm").serializeArray());
+$.ajax({
+  type: "POST",
+  url: "{% url 'user-instance' %}",
+  data: formData,
+  success: function(){},
+  dataType: "json",
+  contentType : "application/json"
+});
+</script> -->
+</head>
+<form action="{% url 'user-instance' %}" method="post" name="myForm">
+	{% csrf_token %}
+    <input type="text" name="account" />
+    <input type="text" name="email" />
+    <input type="submit" value="Add Users" />
+</form>
+{% if test_list %}
+    <ul>
+    {% for users in test_list %}
+        <li><a href="/users/{{ users.id }}/">{{ users.account }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}
+</html>

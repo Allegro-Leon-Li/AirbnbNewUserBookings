@@ -13,27 +13,27 @@ input, button, select {
 </head>
 <body>
 
-<h1>查詢員工</h1>
-<label for="keyword">請輸入員工編號：</label>
+<h1>Title</h1>
+<label for="keyword">keyword</label>
 <input type="text" id="keyword">
 
-<button id="search">查詢</button>
+<button id="search">search</button>
 <p id="searchResult"></p>
 
-<h1>新建員工</h1>
-<label for="staffNumber">請輸入員工編號：</label>
-<input type="text" id="staffNumber"><br>
+<h1>new</h1>
+<label for="style">style</label>
+<input type="text" id="style"><br>
 
-<label for="staffName">請輸入員工姓名：</label>
-<input type="text" id="staffName"><br>
+<label for="code">code</label>
+<input type="text" id="code"><br>
 
-<label for="staffSex">請輸入員工性別：</label>
-<select id="staffSex">
-    <option value="男">男</option>
-    <option value="女">女</option>
+<label for="title">title</label>
+<select id="title">
+    <option value="a">a</option>
+    <option value="b">b</option>
 </select><br>
 
-<button id="save">保存</button>
+<button id="save">save</button>
 <p id="createResult"></p>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -42,7 +42,7 @@ $(document).ready(function() {
     $("#search").click(function() {
         $.ajax({
             type: "GET",
-            url: "service.php?number= " + $("#keyword").val(),
+            url: "127.0.0.1:8000/" + $("#keyword").val(),
             dataType: "json",
             success: function(data) {
                 if (data.number) {
@@ -62,22 +62,20 @@ $(document).ready(function() {
     $("#save").click(function() {
         $.ajax({
             type: "POST",
-            url: "service.php",
+            url: "127.0.0.1:8000/snippets",
             dataType: "json",
             data: {
-                name: $("#staffName").val(),
-                number: $("#staffNumber").val(),
-                sex: $("#staffSex").val()               
+                code: $("#code").val()         
             },
             success: function(data) {
-                if (data.name) {
-                    $("#createResult").html('員工：' + data.name + '，儲存成功！');
+                if (data.code) {
+                    $("#createResult").html('people: ' + data.code + 'success');
                 } else {
                     $("#createResult").html(data.msg);
                 }                   
             },
             error: function(jqXHR) {
-                alert("發生錯誤: " + jqXHR.status);
+                alert("error" + jqXHR.status);
             }
         })
     })
