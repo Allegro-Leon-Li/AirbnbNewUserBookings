@@ -5,10 +5,10 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.post("http://127.0.0.1:8000/snippets/",
+        $.post("http://django-env.bgvrhzerje.us-east-1.elasticbeanstalk.com/snippets/",
         {
-            title: "isane people too",
-            code: "Hilary Clinton",
+            title: "test1",
+            code: "test1",
         },
         function(data,status){
             alert("Data: " + data + "\nStatus: " + status);
