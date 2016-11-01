@@ -1,14 +1,23 @@
 # from django.http import HttpResponse
 # from django.views.decorators.csrf import csrf_exempt
-# from rest_framework.renderers import JSONRenderer
-# from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from snippets.models import Snippet
-from snippets.serializers import SnippetSerializer
+from snippets.models import Snippet,Users
+from snippets.serializers import SnippetSerializer,UserSerializer
+from django.shortcuts import render
 
 
+renderer_classes = [TemplateHTMLRenderer]
+template_name = 'index3.html'
+
+def index(request):
+    test_list = Users.objects.all()
+    context = {'test_list': test_list}
+    return render(request, 'snippets/index3.html', context)
 
 @api_view(['GET', 'POST'])
 def snippet_list(request, format=None):
@@ -26,7 +35,22 @@ def snippet_list(request, format=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET', 'POST'])     
+def user_list(request, format=None):
+    """
+    List all users, or create a new user.
+    """
+    if request.method == 'GET':
+        users = Users.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 
+    elif request.method == 'POST':
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def snippet_detail(request, pk, format=None):
@@ -52,55 +76,29 @@ def snippet_detail(request, pk, format=None):
     elif request.method == 'DELETE':
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-# class JSONResponse(HttpResponse):
-#     """
-#     An HttpResponse that renders its content into JSON.
-#     """
-#     def __init__(self, data, **kwargs):
-#         content = JSONRenderer().render(data)
-#         kwargs['content_type'] = 'application/json'
-#         super(JSONResponse, self).__init__(content, **kwargs)
+@api_view(['GET', 'PUT', 'DELETE'])
+def user_detail(request, pk, format=None):
+    """
+    Retrieve, update or delete a user instance.
+    """
+    try:
+        user = Users.objects.get(pk=pk)
+    except Users.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
-# @csrf_exempt
-# def snippet_list(request):
-#     """
-#     List all code snippets, or create a new snippet.
-#     """
-#     if request.method == 'GET':
-#         snippets = Snippet.objects.all()
-#         serializer = SnippetSerializer(snippets, many=True)
-#         return JSONResponse(serializer.data)
+    if request.method == 'GET':
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
-#     elif request.method == 'POST':
-#         data = JSONParser().parse(request)
-#         serializer = SnippetSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JSONResponse(serializer.data, status=201)
-#         return JSONResponse(serializer.errors, status=400)
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @csrf_exempt
-# def snippet_detail(request, pk):
-#     """
-#     Retrieve, update or delete a code snippet.
-#     """
-#     try:
-#         snippet = Snippet.objects.get(pk=pk)
-#     except Snippet.DoesNotExist:
-#         return HttpResponse(status=404)
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
-#     if request.method == 'GET':
-#         serializer = SnippetSerializer(snippet)
-#         return JSONResponse(serializer.data)
 
-#     elif request.method == 'PUT':
-#         data = JSONParser().parse(request)
-#         serializer = SnippetSerializer(snippet, data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JSONResponse(serializer.data)
-#         return JSONResponse(serializer.errors, status=400)
-
-#     elif request.method == 'DELETE':
-#         snippet.delete()
-#         return HttpResponse(status=204)

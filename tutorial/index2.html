@@ -1,0 +1,16 @@
+{% load url from future %}
+
+<h2>Authors</h2>
+<form action="{% url 'author-list' %}" method="post">
+    <input type="text" name="first_name" />
+    <input type="text" name="last_name" />
+    <input type="submit" value="Add Author" />
+</form>
+<ul>
+    {% for author in authors %}
+        <li>
+            <!-- this URL is built manually -->
+            <a href="/users/{{users.id}}/">{{user.account}} {{user.email}}</a>
+        </li>
+    {% endfor %}
+</ul>

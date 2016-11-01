@@ -7,13 +7,28 @@ LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
 STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 
-class Snippet(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100, blank=True, default='')
-    code = models.TextField()
-    linenos = models.BooleanField(default=False)
-    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
-    style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
+class Users(models.Model):
+	LANGUAGES=(
+		('en','english'),
+		('de','german'),
+		('it','italian'),
+		('ot','others'),
+	)
+	created = models.DateTimeField(auto_now_add=True)
+	account = models.CharField(max_length=100)
+	email = models.CharField(max_length=100)
+	age = models.IntegerField(blank=True,default=0)
+	language = models.CharField(choices=LANGUAGES,blank=True, default='en', max_length=100)
+	class Meta:
+		ordering = ('created',)
 
-    class Meta:
-        ordering = ('created',)
+class Snippet(models.Model):
+	created = models.DateTimeField(auto_now_add=True)
+	title = models.CharField(max_length=100, blank=True, default='')
+	code = models.TextField()
+	linenos = models.BooleanField(default=False)
+	language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
+	style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
+
+	class Meta:
+		ordering = ('created',)
