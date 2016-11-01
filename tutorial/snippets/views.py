@@ -7,7 +7,9 @@ from rest_framework.decorators import api_view
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from snippets.models import Snippet,Users
+# from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer,UserSerializer
+# from snippets.serializers import SnippetSerializer
 from django.shortcuts import render
 
 
@@ -100,5 +102,19 @@ def user_detail(request, pk, format=None):
     elif request.method == 'DELETE':
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+@api_view(['GET'])
+def loc_detail(request, pk, format=None):
+    """
+    Retrieve, update or delete a user instance.
+    """
+    try:
+        user = Users.objects.get(pk=pk)
+    except Users.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = UserSerializer(user)
+        return Response(serializer.data.get('location'))
+
 
 

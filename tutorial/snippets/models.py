@@ -9,16 +9,23 @@ STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 class Users(models.Model):
 	LANGUAGES=(
-		('en','english'),
-		('de','german'),
-		('it','italian'),
-		('ot','others'),
+		('en','English'),
+		('de','German'),
+		('it','Italian'),
+		('ot','Others'),
+	)
+	LOCATIONS=(
+		('us','US'),
+		('de','Germany'),
+		('au','Austrilia'),
+		('ca','Canada'),
 	)
 	created = models.DateTimeField(auto_now_add=True)
 	account = models.CharField(max_length=100)
 	email = models.CharField(max_length=100)
 	age = models.IntegerField(blank=True,default=0)
 	language = models.CharField(choices=LANGUAGES,blank=True, default='en', max_length=100)
+	location = models.CharField(choices=LOCATIONS,blank=True, default='us', max_length=100)
 	class Meta:
 		ordering = ('created',)
 
