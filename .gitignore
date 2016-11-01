@@ -1,11 +1,4 @@
 .DS_Store
-tutorial/snippets/migrations/0004_auto_20161101_0355.py
-tutorial/snippets/migrations/0005_users_location.py
-tutorial/snippets/migrations/0006_delete_users.py
-tutorial/snippets/migrations/0007_users.py
-tutorial/snippets/migrations/0008_auto_20161101_1857.py
-tutorial/snippets/migrations/__pycache__/0004_auto_20161101_0355.cpython-35.pyc
-tutorial/snippets/migrations/__pycache__/0005_users_location.cpython-35.pyc
-tutorial/snippets/migrations/__pycache__/0006_delete_users.cpython-35.pyc
-tutorial/snippets/migrations/__pycache__/0007_users.cpython-35.pyc
-tutorial/snippets/migrations/__pycache__/0008_auto_20161101_1857.cpython-35.pyc
+tutorial/snippets/migrations/*
+tutorial/snippets/__pycache__/*
+tutorial/tutorial/__pycache__/*
