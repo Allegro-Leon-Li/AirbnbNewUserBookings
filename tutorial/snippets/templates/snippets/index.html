@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://v4.pingendo.com/assets/bootstrap/themes/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="section section-fill-height section-opaque-dark text-xs-center" >
+  <!-- <div class="section section-fill-height section-opaque-dark text-xs-center" src="D:\Pictures\Images\20140619_072312.jpg"> -->
+  {% load static %}
+    <div class="background-image" style="background-image : url({% static "snippets/bg.JPG" %})"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="display-3 pi-draggable pi-item text-warning">Sign Up!</h1>
+          <form class="" draggable="true" action="{% url 'user-instance' %}" method="post" name="myForm">
+              {% csrf_token %}
+            <div class="form-group">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="display-5 pi-draggable pi-item text-inverse">Username:</h2>
+                    <input type="text" class="form-control" placeholder="Enter username" name="account">
+
+                    <h2 class="display-5 pi-draggable pi-item text-inverse">Email:</h2>
+                    <input type="email" class="form-control" placeholder="Enter email" name="email">
+
+
+                    <h2 class="display-5 pi-draggable pi-item text-inverse">Age:</h2>
+                    <input type="text" class="form-control" placeholder="Age" name="age">
+
+                    <h2 class="display-5 pi-draggable pi-item text-inverse">Language:</h2>
+                    <input list="language" class="form-control" name="language">
+                    <datalist id="language">
+                      <option value="en">
+                      <option value="de">
+                      <option value="it">
+                    </datalist>
+                    
+<!--                     <div class="dropdown ">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"> Select Language
+                        <span class="caret"></span></button>
+                         <ul class="dropdown-menu">
+                            <li>en</li>
+                            <li>de</li>
+                            <li>it</li>
+                         </ul>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <input type="submit" class="btn btn-lg btn-secondary-outline m-y-lg" value="Submit" />
+              <!-- <a href="#" class="btn btn-lg btn-secondary-outline m-y-lg">Submit</a> -->
+            </div>
+
+          </form>
+          
+            {% if test_list %}
+            {% for users in test_list %}
+             <h3> <a href="/users/loc/{{ users.id }}" class="list-group-item list-group-item-action list-group-item-warning">{{ users.account }}</a></h3>
+            {% endfor %}
+            {% else %}
+                <p class="list-group-item list-group-item-action list-group-item-warning">No users are available.</p>
+            {% endif %}
+         
+        </div>
+      </div>
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

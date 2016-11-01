@@ -14,12 +14,12 @@ from django.shortcuts import render
 
 
 renderer_classes = [TemplateHTMLRenderer]
-template_name = 'index3.html'
+template_name = 'index.html'
 
 def index(request):
     test_list = Users.objects.all()
     context = {'test_list': test_list}
-    return render(request, 'snippets/index3.html', context)
+    return render(request, 'snippets/index.html', context)
 
 @api_view(['GET', 'POST'])
 def snippet_list(request, format=None):
