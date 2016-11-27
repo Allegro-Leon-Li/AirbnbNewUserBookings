@@ -12,52 +12,48 @@
   <!-- <div class="section section-fill-height section-opaque-dark text-xs-center" src="D:\Pictures\Images\20140619_072312.jpg"> -->
   {% load static %}
     <div class="background-image" style="background-image : url({% static "snippets/bg.JPG" %})"></div>
-    <div class="container">
+    <div class="container" ng-app="usr_data" ng-controller="usr_control">
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-3 pi-draggable pi-item text-warning">Demo</h1>
-          <form class="" draggable="true" action="{% url 'user-instance' %}" method="post" name="myForm">
+          <!-- <form ng-app="usr_data" class="" draggable="true" action="{% url 'user-instance' %}" method="post" name="myForm"> -->
+          <form class="" draggable="true" ng-submit="func_submit()" name="myForm">
               {% csrf_token %}
-            <div class="form-group">
+            <div  class="form-group">
               <div class="form-group">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div  class="col-md-12">
                     <h2 class="display-5 pi-draggable pi-item text-inverse">Username:</h2>
-                    <input type="text" class="form-control" placeholder="Enter username" name="account">
+                    <input type="text" class="form-control" ng-model="md.account" placeholder="Enter username" name="account">
 
-                    <h2 class="display-5 pi-draggable pi-item text-inverse">Email:</h2>
-                    <input type="email" class="form-control" placeholder="Enter email" name="email">
+                    <h2 class="display-5 pi-draggable pi-item   text-inverse">Email:</h2>
+                    <input type="email" class="form-control" ng-model="md.email" placeholder="Enter email" name="email">
 
 
                     <h2 class="display-5 pi-draggable pi-item text-inverse">Age:</h2>
-                    <input type="text" class="form-control" placeholder="Age" name="age">
+                    <input type="text" class="form-control"  ng-model="md.age"  placeholder="Age" name="age">
 
                     <h2 class="display-5 pi-draggable pi-item text-inverse">Language:</h2>
-                    <input list="language" class="form-control" name="language">
+                    <input list="language" class="form-control"  ng-model="md.language" name="language">
                     <datalist id="language">
                       <option value="en">
                       <option value="de">
                       <option value="it">
                     </datalist>
-                    
-<!--                     <div class="dropdown ">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"> Select Language
-                        <span class="caret"></span></button>
-                         <ul class="dropdown-menu">
-                            <li>en</li>
-                            <li>de</li>
-                            <li>it</li>
-                         </ul>
-                    </div> -->
+
+                    <input type="hidden" class="form-control"  ng-model="md.os" name="os">
+
+                    <input type="hidden" class="form-control"  ng-model="md.browser" name="browser">
+
+
                   </div>
                 </div>
               </div>
               <input type="submit" class="btn btn-lg btn-secondary-outline m-y-lg" value="Submit" />
-              <!-- <a href="#" class="btn btn-lg btn-secondary-outline m-y-lg">Submit</a> -->
             </div>
 
           </form>
-          
+            <pre>user = {{md}} </pre>
             {% if test_list %}
             {% for users in test_list %}
              <h3> <a href="/users/loc/{{ users.id }}" class="list-group-item list-group-item-action list-group-item-warning">{{ users.account }}</a></h3>
@@ -70,6 +66,8 @@
       </div>
       <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
       <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src={% static "js/usrin.js" %}> </script>
     </div>
   </div>
 
