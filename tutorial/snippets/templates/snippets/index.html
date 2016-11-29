@@ -1,77 +1,145 @@
-<html>
-
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="http://v4.pingendo.com/assets/bootstrap/themes/default.css" rel="stylesheet" type="text/css">
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Travel Oracle</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <!-- Fonts from Font Awsome -->
+    <link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>
+     <!-- Magnific popup -->
+    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static "css/main.css" %}>
+    <!-- Color styles -->
+    <link rel="stylesheet" href={% static "css/colors/blue.css" %}>
+     <!-- Feature detection -->
+    <script src={% static "js/modernizr-2.6.2.min.js" %}></script>
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-  <div class="section section-fill-height section-opaque-dark text-xs-center" >
-  <!-- <div class="section section-fill-height section-opaque-dark text-xs-center" src="D:\Pictures\Images\20140619_072312.jpg"> -->
-  {% load static %}
-    <div class="background-image" style="background-image : url({% static "snippets/bg.JPG" %})"></div>
-    <div class="container" ng-app="usr_data" ng-controller="usr_control">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="display-3 pi-draggable pi-item text-warning">Demo</h1>
-          <!-- <form ng-app="usr_data" class="" draggable="true" action="{% url 'user-instance' %}" method="post" name="myForm"> -->
-          <form class="" draggable="true" ng-submit="func_submit()" name="myForm">
-              {% csrf_token %}
-            <div  class="form-group">
-              <div class="form-group">
-                <div class="row">
-                  <div  class="col-md-12">
-                    <h2 class="display-5 pi-draggable pi-item text-inverse">Username:</h2>
-                    <input type="text" class="form-control" ng-model="md.account" placeholder="Enter username" name="account">
-
-                    <h2 class="display-5 pi-draggable pi-item   text-inverse">Email:</h2>
-                    <input type="email" class="form-control" ng-model="md.email" placeholder="Enter email" name="email">
-
-
-                    <h2 class="display-5 pi-draggable pi-item text-inverse">Age:</h2>
-                    <input type="text" class="form-control"  ng-model="md.age"  placeholder="Age" name="age">
-
-                    <h2 class="display-5 pi-draggable pi-item text-inverse">Language:</h2>
-                    <input list="language" class="form-control"  ng-model="md.language" name="language">
-                    <datalist id="language">
-                      <option value="en">
-                      <option value="de">
-                      <option value="it">
-                    </datalist>
-
-                    <input type="hidden" class="form-control"  ng-model="md.os" name="os">
-
-                    <input type="hidden" class="form-control"  ng-model="md.browser" name="browser">
-
-
-                  </div>
-                </div>
-              </div>
-              <input type="submit" class="btn btn-lg btn-secondary-outline m-y-lg" value="Submit" />
-            </div>
-
-          </form>
-            <pre>user = {{md}} </pre>
-            {% if test_list %}
-            {% for users in test_list %}
-             <h3> <a href="/users/loc/{{ users.id }}" class="list-group-item list-group-item-action list-group-item-warning">{{ users.account }}</a></h3>
-            {% endfor %}
-            {% else %}
-                <p class="list-group-item list-group-item-action list-group-item-warning">No users are available.</p>
-            {% endif %}
-         
-        </div>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-      <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-      <script src={% static "js/usrin.js" %}> </script>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav" id="main-menu">
+          <li><a href="#page-welcome">Home</a></li>
+          <li><a href="#page-portfolio">Countries</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
+<!-- welcome begins -->
+<section id="page-welcome" class="page-welcome">
+  <div>
+      <ul class="slider-controls">
+          <li><a id="vegas-next" class="next" href="#"></a></li>
+          <li><a id="vegas-prev" class="prev" href="#"></a></li>
+      </ul>
+  </div>
+  <div class="container">
+      <div class="row">
+          <header class="centered">
+              <h1>Travel Oracle</h1>
+              <p>Your Pravite travel guide</p>
+          </header>
+         <a href="login" class="btn btn-default"> Give it a try!</a>              
+      </div>
+  </div>
+
+</section><!-- welcome ends -->
+
+
+
+<!-- portfolio begins -->
+<section id="page-portfolio" class="page-portfolio">
+  <div class="container">
+      <div class="row">
+          <header class="section-header">
+              <h2 class="section-title"><span>Countries</span></h2>
+                <div class="spacer"></div>
+              <p class="section-subtitle">the places you will definitely like! </p>
+          </header>
+     
+        <div id="grid-controls-wrapper">
+          <ul class="nav nav-pills center-pills grid-controls">
+            <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
+            <li class="filter" ><a href="javascript:void(0)" data-filter=".branding">Branding</a></li>   
+            <li class="filter" ><a href="javascript:void(0)" data-filter=".design">Design</a></li>            
+            <li class="filter"><a href="javascript:void(0)"  data-filter=".photography">Photography</a></li>
+            <li class="filter" ><a href="javascript:void(0)" data-filter=".web">Website</a></li>
+          </ul>
+        </div>
+      
+        <div>
+          <ul id="grid" class="grid-wrapper">
+              <li class="mix web" >
+               <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail">
+              </a> </li>
+              <li class="mix design">
+                <a href="img/portfolio/large/02.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/02.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/03.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/03.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix web">
+                <a href="img/portfolio/large/04.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/04.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix branding">
+                <a href="img/portfolio/large/05.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/05.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/06.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/06.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix photography">
+                <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/07.png" alt="" class="thumbnail"></a></li>
+              <li class="mix photography">
+                <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/08.png" alt="" class="thumbnail"></a></li>
+              <li class="mix photography">
+                <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/09.png" alt="" class="thumbnail"></a></li>
+              <li class="mix web">
+                <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/10.jpg" alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/11.jpg" alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/12.png" alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/13.png" alt="" class="thumbnail"></a></li>
+              <li class="mix design">
+                <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/14.png" alt="" class="thumbnail"></a></li>
+                 <li class="mix branding">
+                <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/15.png" alt="" class="thumbnail"></a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+</section><!-- portfolio ends -->
+
+<script src={% static "js/jquery-1.10.2.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
+<script src={% static "js/jquery.scrollTo.js" %}></script>
+<script src={% static "js/jquery.nav.js" %}></script>
+<script src={% static "js/jquery.sticky.js" %}></script>
+<script src={% static "js/jquery.easypiechart.min.js" %}></script>
+<script src={% static "js/jquery.vegas.min.js" %}></script>
+<script src={% static "js/jquery.isotope.min.js" %}></script>
+<script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+<script src={% static "js/jquery.validate.js" %}></script>
+<script src={% static "js/waypoints.min.js" %}></script>
+<script src={% static "js/main.js" %}></script>
 
 
 </body>
-
 </html>

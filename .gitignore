@@ -2,3 +2,5 @@
 tutorial/snippets/migrations/*
 tutorial/snippets/__pycache__/*
 tutorial/tutorial/__pycache__/*
+tutorial/.idea/*
+.idea/*

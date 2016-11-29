@@ -18,6 +18,12 @@ def index(request):
     return render(request, 'snippets/index.html', context)
 
 
+def login(request):
+    test_list = Users.objects.all()
+    context = {'test_list': test_list}
+    return render(request, 'snippets/login.html', context)
+
+
 class UserList(generics.ListCreateAPIView):
     model = Users
     queryset = Users.objects.all()
@@ -43,4 +49,3 @@ class LocationDetail(generics.RetrieveAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-

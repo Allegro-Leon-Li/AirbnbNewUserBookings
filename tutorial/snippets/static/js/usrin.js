@@ -1,7 +1,7 @@
 /**
  * Created by allegro_l on 26/11/16.
  */
-    console.log("hello world");
+    console.log("hello world2");
     var OSName="Unknown OS";
     if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
     if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
@@ -45,7 +45,27 @@
           var key1=$scope.md;
           key1.os = OSName;
           key1.browser = navigator.sayswho;
-          console.log(key1);
+
+          if(key1.gender=="not to provide"){
+              key1.gender="-unknown-";
+          }
+          switch(key1.language) {
+            case "English":
+                key1.language='en';
+                break;
+            case "German":
+                key1.language='de';
+                break;
+            case "Italian":
+                key1.language='it';
+                break;
+            case "Others":
+                key1.language='ot';
+                break;
+              default:
+                  console.log(key1.language);
+                break;
+          }
           $http({
             method : "POST",
             url : addr+"users/",
@@ -53,7 +73,8 @@
           }).then(function mySucces(response) {
             window.alert("sucess");
             console.log(response.data);
-            location.reload();
+            // location.reload();
+              window.location="/"
           }, function myError(response) {
             window.alert("not" + response.data);
           });

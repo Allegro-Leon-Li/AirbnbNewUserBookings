@@ -5,6 +5,7 @@ from .views import UserList, UserDetail, LocationDetail
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
+    url(r'^login$', views.login, name="login"),
     # url(r'^users/$', views.user_list, name='user-instance'),
     # url(r'^users/(?P<pk>[0-9]+)$', views.user_detail),
     # url(r'^users/loc/(?P<pk>[0-9]+)$', views.loc_detail),

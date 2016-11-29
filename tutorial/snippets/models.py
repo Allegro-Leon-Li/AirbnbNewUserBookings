@@ -16,6 +16,12 @@ class Users(models.Model):
         ('it', 'Italian'),
         ('ot', 'Others'),
     )
+    GENDER = (
+        ('MALE', 'MALE'),
+        ('FEMALE', 'FEMALE'),
+        ('OTHER', 'OTHER'),
+        ('-unknown-', '-unknown-'),
+    )
     LOCATIONS = (
         ('us', 'US'),
         ('de', 'Germany'),
@@ -23,10 +29,17 @@ class Users(models.Model):
         ('ca', 'Canada'),
     )
     created = models.DateTimeField(auto_now_add=True)
+    # timestamp_first_active = models.DateField(auto_now_add=True)
     account = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
+    gender = models.CharField(choices=GENDER, max_length=100, default='-unknown-')
     age = models.IntegerField(blank=True, default=0)
+    signup_method = models.CharField(max_length=20, default='basic')
     language = models.CharField(choices=LANGUAGES, blank=True, default='en', max_length=100)
+    affiliate_channel = models.CharField(max_length=20, default='direct')
+    affiliate_provider = models.CharField(max_length=20, default='direct')
+    first_affiliate_tracked = models.CharField(max_length=20, default='untracked')
+    signup_app = models.CharField(max_length=20, default='Web')
     os = models.CharField(max_length=100, default='Windows')
     browser = models.CharField(max_length=100, default='Chrome')
     location = models.CharField(choices=LOCATIONS, blank=True, default='us', max_length=100)
