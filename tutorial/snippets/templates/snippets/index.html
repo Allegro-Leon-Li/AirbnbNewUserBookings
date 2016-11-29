@@ -3,160 +3,168 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Articulate</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Fonts from Font Awsome -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-         <!-- Magnific popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <!-- Custom styles for this template -->
-        <link rel="stylesheet" href="css/main.css">
-
-        <!-- Color styles -->
-        <link rel="stylesheet" href="css/colors/blue.css">
-       <!-- <link rel="stylesheet" href="css/colors/yellow.css">-->
-       <!-- <link rel="stylesheet" href="css/colors/red.css">-->
-       <!--  <link rel="stylesheet" href="css/colors/purple.css">-->
-       <!--  <link rel="stylesheet" href="css/colors/orange.css">-->
-       <!--  <link rel="stylesheet" href="css/colors/green.css">-->
-        
-         <!-- Feature detection -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
-        <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="js/plugins/html5shiv.js"></script>
-          <script src="js/plugins/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Travel Oracle</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <!-- Fonts from Font Awsome -->
+{#    <link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>#}
+     <!-- Magnific popup -->
+    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static "css/main.css" %}>
+    <!-- Color styles -->
+    <link rel="stylesheet" href={% static "css/colors/blue.css" %}>
+     <!-- Feature detection -->
+    <script src={% static "js/modernizr-2.6.2.min.js" %}></script>
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
   <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav" id="main-menu">
-            <li><a href="#page-welcome">Home</a></li>
-            <li><a href="#page-portfolio">Countries</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav" id="main-menu">
+          <li><a href="#page-welcome">Home</a></li>
+          <li><a href="#page-portfolio">Countries</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-    <!-- welcome begins -->
-    <section id="page-welcome" class="page-welcome">
-      <div>
-          <ul class="slider-controls">
-              <li><a id="vegas-next" class="next" href="#"></a></li>
-              <li><a id="vegas-prev" class="prev" href="#"></a></li>
+  </div>
+<!-- welcome begins -->
+<section id="page-welcome" class="page-welcome">
+  <div>
+      <ul class="slider-controls">
+          <li><a id="vegas-next" class="next" href="#"></a></li>
+          <li><a id="vegas-prev" class="prev" href="#"></a></li>
+      </ul>
+  </div>
+  <div class="container">
+      <div class="row">
+          <header class="centered">
+              <h1>Travel Oracle</h1>
+              <p>Your Pravite travel guide</p>
+          </header>
+         <a href="login" class="btn btn-default"> Give it a try!</a>              
+      </div>
+  </div>
+
+</section><!-- welcome ends -->
+
+
+
+<!-- portfolio begins -->
+<section id="page-portfolio" class="page-portfolio">
+  <div class="container">
+      <div class="row">
+          <header class="section-header">
+              <h2 class="section-title"><span>Countries</span></h2>
+                <div class="spacer"></div>
+              <p class="section-subtitle">the places you will definitely like! </p>
+          </header>
+     
+        <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
+          <ul class="nav nav-pills center-pills grid-controls">
+            <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
+              <li class="filter" ng-repeat="item in data" ng-if="$index>0"><a href="javascript:void(0)" data-filter=".[[item]]"> [[item]] </a></li>
           </ul>
         </div>
-        <div class="container">
-            <div class="row">
-                <header class="centered">
-                    <h1>Travel Oracle</h1>
-                    <p>Your Pravite travel guide</p>
-                </header>
-               <a href="login2.html" class="btn btn-default"> Give it a try!</a>              
-            </div>
+      
+        <div>
+          <ul id="grid" class="grid-wrapper">
+              <li class="mix us" >
+               <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a> </li>
+              <li class="mix fr">
+                <a href="img/portfolio/large/02.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/02.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/03.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/03.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix it">
+                <a href="img/portfolio/large/04.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/04.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix fr">
+                <a href="img/portfolio/large/05.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/05.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/06.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/06.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix it">
+                <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+                 <li class="mix fr">
+                <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+          </ul>
         </div>
+      </div>
+  </div>
+</section><!-- portfolio ends -->
 
-    </section><!-- welcome ends -->
+<script src={% static "js/jquery-1.10.2.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script src={% static "js/jquery.scrollTo.js" %}></script>
+<script src={% static "js/jquery.nav.js" %}></script>
+<script src={% static "js/jquery.sticky.js" %}></script>
+<script src={% static "js/jquery.easypiechart.min.js" %}></script>
+<script src={% static "js/jquery.vegas.min.js" %}></script>
+<script src={% static "js/jquery.isotope.min.js" %}></script>
+<script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+<script src={% static "js/jquery.validate.js" %}></script>
+<script src={% static "js/waypoints.min.js" %}></script>
+<script src={% static "js/main.js" %}></script>
 
-
-
-    <!-- portfolio begins -->
-     <section id="page-portfolio" class="page-portfolio">
-          <div class="container">
-            <div class="row">
-                <header class="section-header">
-                    <h2 class="section-title"><span>Countries</span></h2>
-                      <div class="spacer"></div>
-                    <p class="section-subtitle">the places you will definitely like! </p>
-                </header>
-           
-                <div id="grid-controls-wrapper">
-                <ul class="nav nav-pills center-pills grid-controls">
-                  <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
-                  <li class="filter" ><a href="javascript:void(0)" data-filter=".branding">Branding</a></li>   
-                  <li class="filter" ><a href="javascript:void(0)" data-filter=".design">Design</a></li>            
-                  <li class="filter"><a href="javascript:void(0)"  data-filter=".photography">Photography</a></li>
-                  <li class="filter" ><a href="javascript:void(0)" data-filter=".web">Website</a></li>
-                </ul>
-              </div>
-            
-                <div>
-                  <ul id="grid" class="grid-wrapper">
-                      <li class="mix web" >
-                       <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/01.png" alt="" class="thumbnail">
-                      </a> </li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/02.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/02.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/03.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/03.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix web">
-                        <a href="img/portfolio/large/04.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/04.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix branding">
-                        <a href="img/portfolio/large/05.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/05.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/06.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/06.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix photography">
-                        <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/07.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix photography">
-                        <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/08.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix photography">
-                        <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/09.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix web">
-                        <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/10.jpg" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/11.jpg" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/12.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/13.png" alt="" class="thumbnail"></a></li>
-                      <li class="mix design">
-                        <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/14.png" alt="" class="thumbnail"></a></li>
-                         <li class="mix branding">
-                        <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/15.png" alt="" class="thumbnail"></a></li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-    </section><!-- portfolio ends -->
+<script>
+var app= angular.module("DestinationApp", []);
+    app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+  });
+    // app.config(['$httpProvider', function($httpProvider) {
+    //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+    // }]);
+app.controller('DestinationController', function($scope, $http) {
+      $scope.data = [
+      {name1:"one", name2:"one", name3:"one", name4:"one",}
+      ];
+      $http({
+          method : "GET",
+          url : "http://127.0.0.1:8000/users/loc/{{ username }}"
+      }).then(function mySucces(response) {
+          $scope.data=response.data;
+          console.log(response.data);
+      }, function myError(response) {
+          console.log("http GET 404");
+      });
 
 
+});
+
+</script>
 
 
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.scrollTo.js"></script>
-        <script src="js/jquery.nav.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/jquery.easypiechart.min.js"></script>
-        <script src="js/jquery.vegas.min.js"></script>
-        <script src="js/jquery.isotope.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/jquery.validate.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/main.js"></script>
-
-    </body>
+</body>
 </html>
