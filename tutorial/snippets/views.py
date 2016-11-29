@@ -14,7 +14,7 @@ template_name = 'index.html'
 
 def index(request):
     test_list = Users.objects.all()
-    context = {'test_list': test_list, 'username': 'callloc1'}
+    context = {'test_list': test_list}
     return render(request, 'snippets/index.html', context)
 
 

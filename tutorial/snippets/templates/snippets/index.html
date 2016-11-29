@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
     <!-- Fonts from Font Awsome -->
-    <link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>
+{#    <link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>#}
      <!-- Magnific popup -->
     <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
     <!-- Custom styles for this template -->
@@ -81,7 +81,7 @@
         <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
           <ul class="nav nav-pills center-pills grid-controls">
             <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
-              <li class="filter" ng-repeat="item in data" ng-if="$index>0"><a href="javascript:void(0)" data-filter=".[[item]]">[[item]]</a></li>
+              <li class="filter" ng-repeat="item in data" ng-if="$index>0"><a href="javascript:void(0)" data-filter=".[[item]]"> [[item]] </a></li>
           </ul>
         </div>
       
