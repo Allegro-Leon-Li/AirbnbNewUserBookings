@@ -1,120 +1,85 @@
-# from django.http import HttpResponse
-# from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from snippets.models import Snippet,Users
-# from snippets.models import Snippet
-from snippets.serializers import SnippetSerializer,UserSerializer
-# from snippets.serializers import SnippetSerializer
+from snippets.models import Users, UsersLocation
+from snippets.serializers import UserSerializer, LocationSerializer
 from django.shortcuts import render
-
+from rest_framework import generics, permissions
+from rest_framework.permissions import IsAdminUser
 
 renderer_classes = [TemplateHTMLRenderer]
 template_name = 'index.html'
+
 
 def index(request):
     test_list = Users.objects.all()
     context = {'test_list': test_list}
     return render(request, 'snippets/index.html', context)
 
-@api_view(['GET', 'POST'])
-def snippet_list(request, format=None):
-    """
-    List all snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
-        snippets = Snippet.objects.all()
-        serializer = SnippetSerializer(snippets, many=True)
-        return Response(serializer.data)
 
-    elif request.method == 'POST':
-        serializer = SnippetSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-@api_view(['GET', 'POST'])     
-def user_list(request, format=None):
-    """
-    List all users, or create a new user.
-    """
-    if request.method == 'GET':
-        users = Users.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
-
-    elif request.method == 'POST':
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def snippet_detail(request, pk, format=None):
-    """
-    Retrieve, update or delete a snippet instance.
-    """
-    try:
-        snippet = Snippet.objects.get(pk=pk)
-    except Snippet.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = SnippetSerializer(snippet)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = SnippetSerializer(snippet, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        snippet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-@api_view(['GET', 'PUT', 'DELETE'])
-def user_detail(request, pk, format=None):
-    """
-    Retrieve, update or delete a user instance.
-    """
-    try:
-        user = Users.objects.get(pk=pk)
-    except Users.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = UserSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-@api_view(['GET'])
-def loc_detail(request, pk, format=None):
-    """
-    Retrieve, update or delete a user instance.
-    """
-    try:
-        user = Users.objects.get(pk=pk)
-    except Users.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = UserSerializer(user)
-        return Response(serializer.data.get('location'))
+def login(request):
+    test_list = Users.objects.all()
+    context = {'test_list': test_list}
+    return render(request, 'snippets/login.html', context)
 
 
+def test(request):
+    return render(request, 'snippets/location.html')
 
+
+def result(name):
+    test_list = Users.objects.all()
+    context = {'test_list': test_list}
+    location_data_save = ['us', 'de', 'fr', 'ot', 'au']
+    serializer_loc = LocationSerializer(
+        data={'account': name, 'location_1': location_data_save[0], 'location_2': location_data_save[1],
+              'location_3': location_data_save[2], 'location_4': location_data_save[3],
+              'location_5': location_data_save[4]})
+    if serializer_loc.is_valid():
+        serializer_loc.save()
+        return True
+    return False
+
+
+class UserList(generics.ListCreateAPIView):
+    model = Users
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save()
+        print(result(self.request.data['account']))
+        # print(self.request.data['account'])
+
+
+class UserDetail(generics.RetrieveAPIView):
+    model = Users
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'account'
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+
+class LocationDetail(generics.RetrieveAPIView):
+    model = UsersLocation
+    queryset = UsersLocation.objects.all()
+    lookup_field = 'account'
+    serializer_class = LocationSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+
+# Temporary function for demo of sprint3
+# TODO: use user's authorization method and session to render index.html
+# This method is to be dropped in sprint 4
+def userinfo(request, account):
+    test_list = Users.objects.all()
+    context = {'test_list': test_list, 'username': account}
+    return render(request, 'snippets/index.html', context)

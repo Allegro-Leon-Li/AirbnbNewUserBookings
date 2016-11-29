@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script>var app= angular.module("MyApp", []);
+    app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+  });
+    // app.config(['$httpProvider', function($httpProvider) {
+    //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+    // }]);
+app.controller('MyController', function($scope, $http) {
+      $scope.data = [
+      {name1:"one", name2:"one", name3:"one", name4:"one",}
+      ];
+      $http({
+          method : "GET",
+          url : "http://127.0.0.1:8000/users/loc/callloc1"
+      }).then(function mySucces(response) {
+          $scope.data=response.data;
+          console.log(response.data);
+      }, function myError(response) {
+          window.alert("not" + response.data);
+      });
+
+
+});</script>
+    
+  </head>
+
+  <body ng-app="MyApp" ng-controller="MyController">
+    
+    <div class="panel panel-default" ng-repeat="item in data" ng-if="$index>0">
+      <div class="panel-heading">[[item]]
+</div>
+      <div class="panel-body">
+        <div>
+            [[item]]
+        </div>
+      </div>
+    </div>
+<!--     
+    <div class="panel panel-default">
+      <div class="panel-heading">ng-repeat with anchor tag</a></div>
+      <div class="panel-body">
+        <a ng-repeat="item in data" ng-href="#">
+            <div>{{item.name}}</div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">ng-repeat with bootstrap list-item</a></div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a ng-repeat="item in data" ng-href="#" class="list-group-item">
+            <div>{{item.name}}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">ng-repeat with bootstrap list-item and badge</a></div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a ng-repeat="item in data" ng-href="#" class="list-group-item">
+            <span class="badge" ng-if="item.children > 0">></span>
+            <div>{{item.name}}</div>
+          </a>
+        </div>
+      </div>
+    </div> -->
+    
+  
+  </body>
+
+</html>
