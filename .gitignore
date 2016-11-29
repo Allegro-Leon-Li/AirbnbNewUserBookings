@@ -1,1 +1,14 @@
 .DS_Store
+tutorial/snippets/migrations/*
+tutorial/snippets/__pycache__/*
+tutorial/tutorial/__pycache__/*
+tutorial/.idea/*
+.idea/*
+tuorial/.elasticbeanstalk/*
+tuorial/.ebextensions/*
+static/*
+algorithm/input/*
+algorithm/xgboost/*
+algorithm/countries.csv
+algorithm/sub.csv
+
