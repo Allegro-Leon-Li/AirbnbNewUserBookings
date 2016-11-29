@@ -78,49 +78,45 @@
               <p class="section-subtitle">the places you will definitely like! </p>
           </header>
      
-        <div id="grid-controls-wrapper">
+        <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
           <ul class="nav nav-pills center-pills grid-controls">
             <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
-            <li class="filter" ><a href="javascript:void(0)" data-filter=".branding">Branding</a></li>   
-            <li class="filter" ><a href="javascript:void(0)" data-filter=".design">Design</a></li>            
-            <li class="filter"><a href="javascript:void(0)"  data-filter=".photography">Photography</a></li>
-            <li class="filter" ><a href="javascript:void(0)" data-filter=".web">Website</a></li>
+              <li class="filter" ng-repeat="item in data" ng-if="$index>0"><a href="javascript:void(0)" data-filter=".[[item]]">[[item]]</a></li>
           </ul>
         </div>
       
         <div>
           <ul id="grid" class="grid-wrapper">
-              <li class="mix web" >
-               <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail">
-              </a> </li>
-              <li class="mix design">
+              <li class="mix us" >
+               <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a> </li>
+              <li class="mix fr">
                 <a href="img/portfolio/large/02.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/02.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix design">
+              <li class="mix us">
                 <a href="img/portfolio/large/03.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/03.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix web">
+              <li class="mix it">
                 <a href="img/portfolio/large/04.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/04.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix branding">
+              <li class="mix fr">
                 <a href="img/portfolio/large/05.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/05.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix design">
+              <li class="mix us">
                 <a href="img/portfolio/large/06.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/06.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix photography">
-                <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/07.png" alt="" class="thumbnail"></a></li>
-              <li class="mix photography">
-                <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/08.png" alt="" class="thumbnail"></a></li>
-              <li class="mix photography">
-                <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/09.png" alt="" class="thumbnail"></a></li>
-              <li class="mix web">
-                <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/10.jpg" alt="" class="thumbnail"></a></li>
-              <li class="mix design">
-                <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/11.jpg" alt="" class="thumbnail"></a></li>
-              <li class="mix design">
-                <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/12.png" alt="" class="thumbnail"></a></li>
-              <li class="mix design">
-                <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/13.png" alt="" class="thumbnail"></a></li>
-              <li class="mix design">
-                <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/14.png" alt="" class="thumbnail"></a></li>
-                 <li class="mix branding">
-                <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src="img/portfolio/small/15.png" alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix de">
+                <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix it">
+                <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix us">
+                <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+                 <li class="mix fr">
+                <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
           </ul>
         </div>
       </div>
@@ -129,6 +125,7 @@
 
 <script src={% static "js/jquery-1.10.2.min.js" %}></script>
 <script src={% static "js/bootstrap.min.js" %}></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
 <script src={% static "js/jquery.scrollTo.js" %}></script>
 <script src={% static "js/jquery.nav.js" %}></script>
 <script src={% static "js/jquery.sticky.js" %}></script>
@@ -139,6 +136,34 @@
 <script src={% static "js/jquery.validate.js" %}></script>
 <script src={% static "js/waypoints.min.js" %}></script>
 <script src={% static "js/main.js" %}></script>
+
+<script>
+var app= angular.module("DestinationApp", []);
+    app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+  });
+    // app.config(['$httpProvider', function($httpProvider) {
+    //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+    // }]);
+app.controller('DestinationController', function($scope, $http) {
+      $scope.data = [
+      {name1:"one", name2:"one", name3:"one", name4:"one",}
+      ];
+      $http({
+          method : "GET",
+          url : "http://127.0.0.1:8000/users/loc/{{ username }}"
+      }).then(function mySucces(response) {
+          $scope.data=response.data;
+          console.log(response.data);
+      }, function myError(response) {
+          console.log("http GET 404");
+      });
+
+
+});
+
+</script>
 
 
 </body>

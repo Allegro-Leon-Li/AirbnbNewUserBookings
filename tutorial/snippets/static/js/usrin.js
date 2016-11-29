@@ -30,17 +30,17 @@
       $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
     }]);
     app.controller('usr_control', function($scope, $http) {
-    // deprecated part for $http get
-      // $scope.func_ck = function() {
-      //   $http({
-      //       method : "GET",
-      //       url : "http://127.0.0.1:8000/users/loc/1"
-      //   }).then(function mySucces(response) {
-      //       window.alert(response.data);
-      //   }, function myError(response) {
-      //       window.alert("not" + response.data);
-      //   });
-      // };
+    // deprecated part for $http get, for testing use
+    //   $scope.func_ck = function() {
+    //     $http({
+    //         method : "GET",
+    //         url : "http://127.0.0.1:8000/users/loc/callloc1"
+    //     }).then(function mySucces(response) {
+    //         console.log(response.data);
+    //     }, function myError(response) {
+    //         window.alert("not" + response.data);
+    //     });
+    //   };
         $scope.func_submit = function() {
           var key1=$scope.md;
           key1.os = OSName;
@@ -74,7 +74,8 @@
             window.alert("sucess");
             console.log(response.data);
             // location.reload();
-              window.location="/"
+              var redir="/usersloc/"+key1.account;
+              window.location='/usersloc/'+key1.account;
           }, function myError(response) {
             window.alert("not" + response.data);
           });
