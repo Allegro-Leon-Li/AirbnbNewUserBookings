@@ -71,7 +71,7 @@
             url : addr+"users/",
             data: key1
           }).then(function mySucces(response) {
-            window.alert("sucess");
+            // window.alert("sucess");
             console.log(response.data);
             // location.reload();
               var redir="/usersloc/"+key1.account;

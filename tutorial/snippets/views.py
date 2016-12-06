@@ -7,6 +7,7 @@ from snippets.serializers import UserSerializer, LocationSerializer
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.permissions import IsAdminUser
+from snippets.predict import prediction
 
 renderer_classes = [TemplateHTMLRenderer]
 template_name = 'index.html'
@@ -14,8 +15,8 @@ template_name = 'index.html'
 
 def index(request):
     test_list = Users.objects.all()
-    context = {'test_list': test_list}
-    return render(request, 'snippets/index.html', context)
+    # context = {'test_list': test_list}
+    return render(request, 'snippets/index.html')
 
 
 def login(request):
@@ -31,7 +32,9 @@ def test(request):
 def result(name):
     test_list = Users.objects.all()
     context = {'test_list': test_list}
-    location_data_save = ['us', 'de', 'fr', 'ot', 'au']
+    # location_data_save = ['us', 'de', 'fr', 'ot', 'au']
+    location_data_save=prediction()
+    print(location_data_save)
     serializer_loc = LocationSerializer(
         data={'account': name, 'location_1': location_data_save[0], 'location_2': location_data_save[1],
               'location_3': location_data_save[2], 'location_4': location_data_save[3],
@@ -52,7 +55,7 @@ class UserList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save()
-        print(result(self.request.data['account']))
+        result(self.request.data['account'])
         # print(self.request.data['account'])
 
 
@@ -79,7 +82,13 @@ class LocationDetail(generics.RetrieveAPIView):
 # Temporary function for demo of sprint3
 # TODO: use user's authorization method and session to render index.html
 # This method is to be dropped in sprint 4
-def userinfo(request, account):
-    test_list = Users.objects.all()
-    context = {'test_list': test_list, 'username': account}
+def userinfo(request, account_in):
+    location_object = UsersLocation.objects.get(account=account_in)
+    test_list=[]
+    test_list.append(location_object.location_1)
+    test_list.append(location_object.location_2)
+    test_list.append(location_object.location_3)
+    test_list.append(location_object.location_4)
+    test_list.append(location_object.location_5)
+    context = {'test_list': test_list, 'username': account_in}
     return render(request, 'snippets/index.html', context)

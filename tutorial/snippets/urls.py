@@ -6,7 +6,7 @@ from .views import UserList, UserDetail, LocationDetail
 urlpatterns = [
 
     url(r'^test$', views.test, name="test"),
-    url(r'^usersloc/(?P<account>\w+)$', views.userinfo),
+    url(r'^usersloc/(?P<account_in>\w+)$', views.userinfo),
     url(r'^$', views.index, name="index"),
     url(r'^login$', views.login, name="login"),
     # url(r'^users/$', views.user_list, name='user-instance'),
