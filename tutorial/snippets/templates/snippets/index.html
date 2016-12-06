@@ -14,15 +14,32 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
     <!-- Fonts from Font Awsome -->
-{#    <link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>#}
+    <link rel="stylesheet" href={% static "css/font-awesome.css" %}>
      <!-- Magnific popup -->
     <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href={% static "css/main.css" %}>
+    <link href={% static "css/animate.css" %} rel="stylesheet">
     <!-- Color styles -->
     <link rel="stylesheet" href={% static "css/colors/blue.css" %}>
+    <link rel="stylesheet" href={% static "css/colors/yellow.css" %}>
+    <link rel="stylesheet" href={% static "css/colors/red.css" %}>
+     <link rel="stylesheet" href={% static "css/colors/purple.css" %}>
+     <link rel="stylesheet" href={% static "css/colors/orange.css" %}>
+     <link rel="stylesheet" href={% static "css/colors/green.css" %}>
      <!-- Feature detection -->
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+     <script src={% static "js/jquery-1.10.2.min.js" %}></script>
+     <script src={% static "js/jquery.scrollTo.js" %}></script>
+<script src={% static "js/jquery.nav.js" %}></script>
+<script src={% static "js/jquery.sticky.js" %}></script>
+<script src={% static "js/jquery.easypiechart.min.js" %}></script>
+<script src={% static "js/jquery.vegas.min.js" %}></script>
+<script src={% static "js/jquery.isotope.min.js" %}></script>
     <script src={% static "js/modernizr-2.6.2.min.js" %}></script>
+    <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+    <script src={% static "js/jquery.validate.js" %}></script>
+
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -81,89 +98,95 @@
         <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
           <ul class="nav nav-pills center-pills grid-controls">
             <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
-              <li class="filter" ng-repeat="item in data" ng-if="$index>0"><a href="javascript:void(0)" data-filter=".[[item]]"> [[item]] </a></li>
+<!--             <li class="filter" ng-repeat="item in data" ng-if="$index>0">
+            <a href="javascript:void(0)" data-filter=".[[item]]"> [[item]] </a></li> -->
+            {% if test_list %}
+            {% for item in test_list %}
+            <li class="filter">
+            <a href="javascript:void(0)" data-filter=".{{item}}"> {{item}} </a></li>
+            {% endfor %}
+            {% endif %}
           </ul>
         </div>
       
         <div>
           <ul id="grid" class="grid-wrapper">
-              <li class="mix us" >
-               <a href="img/portfolio/large/01.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a> </li>
-              <li class="mix fr">
-                <a href="img/portfolio/large/02.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/02.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/03.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/03.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix it">
-                <a href="img/portfolio/large/04.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/04.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix fr">
-                <a href="img/portfolio/large/05.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/05.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/06.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/06.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix de">
-                <a href="img/portfolio/large/07.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix de">
-                <a href="img/portfolio/large/08.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix de">
-                <a href="img/portfolio/large/09.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix it">
-                <a href="img/portfolio/large/10.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/11.jpg"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/12.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/13.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-              <li class="mix us">
-                <a href="img/portfolio/large/14.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
-                 <li class="mix fr">
-                <a href="img/portfolio/large/15.png"><div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/01.png" %} alt="" class="thumbnail"></a></li>
+              <li class="mix US" >
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/ny1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix FR">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/fr1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix CA">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/ca1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix IT">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/it1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix AU">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/au1.png" %} alt="" class="thumbnail"></li>
+              <li class="mix GB">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/gb1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix DE">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/de1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix DE">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/de2.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix ES">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/es1.png" %} alt="" class="thumbnail"></li>
+              <li class="mix PT">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/pt1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix other">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/other1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix NL">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/nl1.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix US">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/us2.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix other">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/other2.jpg" %} alt="" class="thumbnail"></li>
+              <li class="mix FR">
+                <div class="overlay"><i class="fa fa-search"></i></div><img src={% static "img/portfolio/small/fr2.jpg" %} alt="" class="thumbnail"></li>
           </ul>
         </div>
       </div>
   </div>
 </section><!-- portfolio ends -->
-
-<script src={% static "js/jquery-1.10.2.min.js" %}></script>
-<script src={% static "js/bootstrap.min.js" %}></script>
-      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-<script src={% static "js/jquery.scrollTo.js" %}></script>
-<script src={% static "js/jquery.nav.js" %}></script>
-<script src={% static "js/jquery.sticky.js" %}></script>
-<script src={% static "js/jquery.easypiechart.min.js" %}></script>
-<script src={% static "js/jquery.vegas.min.js" %}></script>
-<script src={% static "js/jquery.isotope.min.js" %}></script>
-<script src={% static "js/jquery.magnific-popup.min.js" %}></script>
-<script src={% static "js/jquery.validate.js" %}></script>
-<script src={% static "js/waypoints.min.js" %}></script>
-<script src={% static "js/main.js" %}></script>
-
-<script>
-var app= angular.module("DestinationApp", []);
-    app.config(function($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-  });
-    // app.config(['$httpProvider', function($httpProvider) {
-    //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
-    // }]);
-app.controller('DestinationController', function($scope, $http) {
-      $scope.data = [
-      {name1:"one", name2:"one", name3:"one", name4:"one",}
-      ];
-      $http({
-          method : "GET",
-          url : "http://127.0.0.1:8000/users/loc/{{ username }}"
-      }).then(function mySucces(response) {
-          $scope.data=response.data;
-          console.log(response.data);
-      }, function myError(response) {
-          console.log("http GET 404");
-      });
+ 
 
 
-});
+    <script>
+
+// var app= angular.module("DestinationApp", []);
+//     app.config(function($interpolateProvider) {
+//     $interpolateProvider.startSymbol('[[');
+//     $interpolateProvider.endSymbol(']]');
+//   });
+//     // app.config(['$httpProvider', function($httpProvider) {
+//     //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+//     // }]);
+// app.controller('DestinationController', function($scope, $http) {
+//       $scope.data = [
+//       {}
+//       ];
+//       $http({
+//           method : "GET",
+//           url : "http://127.0.0.1:8000/users/loc/{{ username }}"
+//       }).then(function mySucces(response) {
+//           $scope.data=response.data;
+//           console.log(response.data);
+//       }, function myError(response) {
+//           console.log("http GET 404");
+//       });
+
+
+// });
 
 </script>
+<!-- <script src={% static  "js/modernizr-2.6.2.min.js" %}></script> -->
+
+<script src={% static "js/bootstrap.min.js" %}></script>
+
+
+<script src={% static "js/main.js" %}></script>
+
+<script src={% static "js/waypoints.min.js" %}></script>
+
+
 
 
 </body>

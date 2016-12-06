@@ -23,20 +23,21 @@ class Users(models.Model):
         ('-unknown-', '-unknown-'),
     )
     LOCATIONS = (
-        ('us', 'US'),
-        ('de', 'Germany'),
-        ('au', 'Australia'),
-        ('ca', 'Canada'),
-        ('fr', 'France'),
-        ('gb', 'Britain'),
-        ('es', 'Spain'),
-        ('pt', 'Portugal'),
-        ('nl', 'Netherlands'),
-        ('ot', 'Others'),
+        ('US', 'US'),
+        ('DE', 'Germany'),
+        ('AU', 'Australia'),
+        ('CA', 'Canada'),
+        ('IT', 'Italy'),
+        ('FR', 'France'),
+        ('GB', 'Britain'),
+        ('ES', 'Spain'),
+        ('PT', 'Portugal'),
+        ('NL', 'Netherlands'),
+        ('other', 'Others'),
     )
     created = models.DateTimeField(auto_now_add=True)
     # timestamp_first_active = models.DateField(auto_now_add=True)
-    account = models.CharField(max_length=100)
+    account = models.CharField(max_length=100, primary_key=True)
     email = models.CharField(max_length=100)
     gender = models.CharField(choices=GENDER, max_length=100, default='-unknown-')
     age = models.IntegerField(blank=True, default=0)
@@ -67,23 +68,24 @@ class Users(models.Model):
 
 class UsersLocation(models.Model):
     LOCATIONS = (
-        ('us', 'US'),
-        ('de', 'Germany'),
-        ('au', 'Australia'),
-        ('ca', 'Canada'),
-        ('fr', 'France'),
-        ('gb', 'Britain'),
-        ('es', 'Spain'),
-        ('pt', 'Portugal'),
-        ('nl', 'Netherlands'),
-        ('ot', 'Others'),
+        ('US', 'US'),
+        ('DE', 'Germany'),
+        ('AU', 'Australia'),
+        ('CA', 'Canada'),
+        ('IT', 'Italy'),
+        ('FR', 'France'),
+        ('GB', 'Britain'),
+        ('ES', 'Spain'),
+        ('PT', 'Portugal'),
+        ('NL', 'Netherlands'),
+        ('other', 'Others'),
     )
     account = models.CharField(max_length=100)
-    location_1 = models.CharField(choices=LOCATIONS, blank=True, default='us', max_length=100)
-    location_2 = models.CharField(choices=LOCATIONS, blank=True, default='de', max_length=100)
-    location_3 = models.CharField(choices=LOCATIONS, blank=True, default='au', max_length=100)
-    location_4 = models.CharField(choices=LOCATIONS, blank=True, default='ca', max_length=100)
-    location_5 = models.CharField(choices=LOCATIONS, blank=True, default='fr', max_length=100)
+    location_1 = models.CharField(choices=LOCATIONS, blank=True, default='US', max_length=100)
+    location_2 = models.CharField(choices=LOCATIONS, blank=True, default='DE', max_length=100)
+    location_3 = models.CharField(choices=LOCATIONS, blank=True, default='AU', max_length=100)
+    location_4 = models.CharField(choices=LOCATIONS, blank=True, default='CA', max_length=100)
+    location_5 = models.CharField(choices=LOCATIONS, blank=True, default='FR', max_length=100)
 
     class Meta:
         ordering = ('account',)
