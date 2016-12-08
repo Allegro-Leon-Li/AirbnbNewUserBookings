@@ -1,0 +1,8 @@
+.DS_Store
+tutorial/snippets/__pycache__/*
+tutorial/tutorial/__pycache__/*
+tutorial/snippets/migrations
+algorithm/input/*
+algorithm/xgboost/*
+algorithm/countries.csv
+algorithm/sub.csv
