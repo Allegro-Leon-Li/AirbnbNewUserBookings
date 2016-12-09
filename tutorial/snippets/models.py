@@ -37,7 +37,7 @@ class Users(models.Model):
     )
     created = models.DateTimeField(auto_now_add=True)
     # timestamp_first_active = models.DateField(auto_now_add=True)
-    account = models.CharField(max_length=100, primary_key=True)
+    account = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     gender = models.CharField(choices=GENDER, max_length=100, default='-unknown-')
     age = models.IntegerField(blank=True, default=0)
