@@ -8,7 +8,8 @@ from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.permissions import IsAdminUser
 from snippets.predict import prediction
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.models import User
 
 renderer_classes = [TemplateHTMLRenderer]
 template_name = 'index.html'
@@ -34,13 +35,16 @@ def index(request):
     return render(request, 'snippets/index.html')
 
 
-def login(request):
+def register(request):
     print(request.user)
     logout(request)
     test_list = Users.objects.all()
     context = {'test_list': test_list}
     return render(request, 'snippets/login.html', context)
 
+def logout_view(request):
+    logout(request)
+    return render(request, 'snippets/index.html')
 
 def test(request):
     return render(request, 'snippets/location.html')
@@ -48,8 +52,6 @@ def test(request):
 
 def result(name):
     test_list = Users.objects.all()
-    context = {'test_list': test_list}
-    # location_data_save = ['us', 'de', 'fr', 'ot', 'au']
     location_data_save = prediction()
     print(location_data_save)
     serializer_loc = LocationSerializer(
@@ -71,9 +73,21 @@ class UserList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
+
+
+        # user.set_password(self.request.data['password'])
+        # user.save()
         serializer.save()
+        user = User.objects.create_user(
+            username=self.request.data['account'],
+            password=self.request.data['password'],
+            email=self.request.data['email'],
+        )
         result(self.request.data['account'])
         # print(self.request.data['account'])
+        auth=authenticate(username=self.request.data['account'],password=self.request.data['password'])
+        login(self.request,auth)
+
 
 
 class UserDetail(generics.RetrieveAPIView):
@@ -97,15 +111,14 @@ class LocationDetail(generics.RetrieveAPIView):
 
 
 # Temporary function for demo of sprint3
-# TODO: use user's authorization method and session to render index.html
 # This method is to be dropped in sprint 4
-def userinfo(request, account_in):
-    location_object = UsersLocation.objects.get(account=account_in)
-    test_list = []
-    test_list.append(location_object.location_1)
-    test_list.append(location_object.location_2)
-    test_list.append(location_object.location_3)
-    test_list.append(location_object.location_4)
-    test_list.append(location_object.location_5)
-    context = {'test_list': test_list, 'username': account_in}
-    return render(request, 'snippets/index.html', context)
+# def userinfo(request, account_in):
+#     location_object = UsersLocation.objects.get(account=account_in)
+#     test_list = []
+#     test_list.append(location_object.location_1)
+#     test_list.append(location_object.location_2)
+#     test_list.append(location_object.location_3)
+#     test_list.append(location_object.location_4)
+#     test_list.append(location_object.location_5)
+#     context = {'test_list': test_list, 'username': account_in}
+#     return render(request, 'snippets/index.html', context)

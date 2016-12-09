@@ -18,5 +18,5 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^', include('snippets.urls')),
-    url(r'^sign$', auth_views.login, name="signin"),
+    url(r'^sign$', auth_views.login, name="login"),
 ]
