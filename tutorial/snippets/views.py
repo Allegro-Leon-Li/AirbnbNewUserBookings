@@ -8,18 +8,35 @@ from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.permissions import IsAdminUser
 from snippets.predict import prediction
+from django.contrib.auth import logout
 
 renderer_classes = [TemplateHTMLRenderer]
 template_name = 'index.html'
 
 
 def index(request):
+    # logout(request)
+    # print(request.user)
+    user = request.user
+    print(user)
+    if user.is_authenticated:
+        location_object = UsersLocation.objects.get(account=user)
+        test_list = []
+        test_list.append(location_object.location_1)
+        test_list.append(location_object.location_2)
+        test_list.append(location_object.location_3)
+        test_list.append(location_object.location_4)
+        test_list.append(location_object.location_5)
+        context = {'test_list': test_list, 'username': user}
+        return render(request, 'snippets/index.html', context)
     test_list = Users.objects.all()
     # context = {'test_list': test_list}
     return render(request, 'snippets/index.html')
 
 
 def login(request):
+    print(request.user)
+    logout(request)
     test_list = Users.objects.all()
     context = {'test_list': test_list}
     return render(request, 'snippets/login.html', context)
@@ -33,7 +50,7 @@ def result(name):
     test_list = Users.objects.all()
     context = {'test_list': test_list}
     # location_data_save = ['us', 'de', 'fr', 'ot', 'au']
-    location_data_save=prediction()
+    location_data_save = prediction()
     print(location_data_save)
     serializer_loc = LocationSerializer(
         data={'account': name, 'location_1': location_data_save[0], 'location_2': location_data_save[1],
@@ -84,7 +101,7 @@ class LocationDetail(generics.RetrieveAPIView):
 # This method is to be dropped in sprint 4
 def userinfo(request, account_in):
     location_object = UsersLocation.objects.get(account=account_in)
-    test_list=[]
+    test_list = []
     test_list.append(location_object.location_1)
     test_list.append(location_object.location_2)
     test_list.append(location_object.location_3)
