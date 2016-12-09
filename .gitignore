@@ -1,6 +1,7 @@
 .DS_Store
 tutorial/snippets/__pycache__/*
 tutorial/tutorial/__pycache__/*
+tutorial/snippets/migrations/*
 tutorial/.idea/*
 .idea/*
 tuorial/.elasticbeanstalk/*
