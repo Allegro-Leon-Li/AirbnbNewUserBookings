@@ -12,8 +12,11 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+    <button type="submit">Log chdin</button>
+    <div class="alert alert-dismissible">
+    <a href="index" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+    </form>
 {% endblock %}
 </body>
 </html>
