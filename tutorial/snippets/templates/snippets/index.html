@@ -76,8 +76,17 @@
           <header class="centered">
               <h1>Travel Oracle</h1>
               <p>Your Pravite travel guide</p>
+              {% if username %}
+                  <h2>Hello, {{ username }}</h2>
+              {% endif %}
           </header>
-         <a href="login" class="btn btn-default"> Give it a try!</a>              
+          {% if username %}
+
+          <a href="logout" class="btn btn-default"> Logout!</a>
+              {% else %}
+              <a href="sign" class="btn btn-default"> Log In</a>
+              <a href="register" class="btn btn-default"> Give it a try!</a>
+          {% endif %}
       </div>
   </div>
 

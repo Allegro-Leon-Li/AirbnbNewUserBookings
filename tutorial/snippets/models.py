@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # from pygments.lexers import get_all_lexers
 # from pygments.styles import get_all_styles
@@ -35,9 +35,10 @@ class Users(models.Model):
         ('NL', 'Netherlands'),
         ('other', 'Others'),
     )
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     # timestamp_first_active = models.DateField(auto_now_add=True)
-    account = models.CharField(max_length=100, primary_key=True)
+    account = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     gender = models.CharField(choices=GENDER, max_length=100, default='-unknown-')
     age = models.IntegerField(blank=True, default=0)
@@ -49,7 +50,6 @@ class Users(models.Model):
     signup_app = models.CharField(max_length=20, default='Web')
     os = models.CharField(max_length=100, default='Windows')
     browser = models.CharField(max_length=100, default='Chrome')
-    location = models.CharField(choices=LOCATIONS, blank=True, default='us', max_length=100)
 
     class Meta:
         ordering = ('created',)
