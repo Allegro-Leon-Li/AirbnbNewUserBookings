@@ -20,10 +20,14 @@ img {
 
 a:link,a:visited {
     outline: 0;
+    color: white;
+    text-decoration: underline;
 }
 
 a:hover,a:active {
-    text-decoration: none;
+    outline: 0;
+    color: cadetblue;
+    text-decoration: underline;
 }
 
 a img {
@@ -166,6 +170,7 @@ background-color: transparent;
 
 #page-contact .contact-info p{
     font-size:1.8em;
+    color:#fff;
 }
 
 
