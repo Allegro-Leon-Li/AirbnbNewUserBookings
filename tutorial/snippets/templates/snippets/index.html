@@ -76,9 +76,23 @@
       <div class="row">
           <header class="centered">
               <h1>Travel Oracle</h1>
+
               <p>Your Private travel guide</p>
           </header>
-         <a href="login" class="btn btn-default animated swing"> TRY ME!</a>              
+
+              <p>Your Pravite travel guide</p>
+              {% if username %}
+                  <h2>Hello, {{ username }}</h2>
+              {% endif %}
+          </header>
+          {% if username %}
+
+          <a href="logout" class="btn btn-default animated swing"> Logout!</a>
+              {% else %}
+              <a href="sign" class="btn btn-default animated swing"> Log In</a>
+              <a href="login" class="btn btn-default animated swing"> TRY ME!</a> 
+          {% endif %}
+
       </div>
   </div>
 

@@ -6,7 +6,7 @@ from snippets.models import Users, UsersLocation
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ('account', 'email', 'gender', 'age', 'language', 'os', 'browser', 'location')
+        fields = ('id','account', 'email', 'gender', 'age', 'language', 'os', 'browser')
 
 
 class LocationSerializer(serializers.ModelSerializer):
