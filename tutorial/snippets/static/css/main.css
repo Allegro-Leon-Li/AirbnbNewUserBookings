@@ -26,7 +26,7 @@ a:link,a:visited {
 
 a:hover,a:active {
     outline: 0;
-    color: cadetblue;
+    color: white;
     text-decoration: underline;
 }
 
@@ -161,7 +161,7 @@ background-color: transparent;
 
 #page-contact{
     width: 100%;
-    height: 100%;
+    height: 60%;
     position: relative;
     overflow: hidden;
     text-align: center;
