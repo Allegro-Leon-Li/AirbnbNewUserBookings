@@ -77,10 +77,16 @@
           <header class="centered">
               <h1>Travel Oracle</h1>
               <p>Your Private travel guide</p>
+
+
+          </header>
+
+
+
               {% if username %}
                   <h2>Hello, {{ username }}</h2>
               {% endif %}
-          </header>
+        
           {% if username %}
           <a href="logout" class="btn btn-default animated swing"> Logout!</a>
               {% else %}
@@ -166,12 +172,16 @@
                 <div class="spacer"></div>
               <h3><p class="contact-info"> Want to take a trip and don't know where to go?  </p>
               <p class="contact-info"> Worry not! </p>
-              <p class="contact-info"> Our app does it for you! </p>
+
+              <p class="contact-info"> Our app does it for you! </p> </h3>
+              
               {% if not username %}
-              <p class="contact-info"> All you need to do is </p></h3>
+              <h3><p class="contact-info"> All you need to do is: </p></h3>
               <h2><a href="#page-welcome"> Sign Up!</a></h2>
               {% endif %}
-          </header>
+
+         </header>
+
       </div>
   </div>
 
