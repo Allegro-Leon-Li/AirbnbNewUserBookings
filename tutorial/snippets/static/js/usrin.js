@@ -24,7 +24,7 @@
       return M[0];
     })();
     console.log(navigator.sayswho);
-    var addr="http://127.0.0.1:8000/";
+    var addr="";
     var app = angular.module('usr_data', []);
     app.config(['$httpProvider', function($httpProvider) {
       $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';

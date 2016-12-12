@@ -79,9 +79,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'ec601db',
+        'NAME': 'ebdb',
         'USER':'ec601',
         'PASSWORD':'password',
+        'HOST': 'aakszridxyxnd5.cclbkwnjrjpj.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 

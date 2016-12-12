@@ -14,3 +14,8 @@ algorithm/sub.csv
 eb-virt/*
 zipfile/*
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
