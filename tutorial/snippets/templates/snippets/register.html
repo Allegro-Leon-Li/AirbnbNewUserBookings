@@ -7,7 +7,7 @@
     {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Register</title>
+    <title>Articulate</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="">
@@ -64,7 +64,7 @@
           </div>
       </div>
 <!-- style="display:none;" -->
-    <div class="container" id="container" ng-app="usr_data"  >
+    <div class="container" id="container" ng-app="usr_data" ng-controller="usr_control" >
       <section id="form" >
 <!--             <div class="container">    -->
           <div id="loginbox" class="mainbox col-xs-12 col-sm-6 animated zoomInDown">
@@ -72,17 +72,12 @@
               <div class="panel-heading">
                 <div class="panel-title text-center"><h2>Just One Last Step !</h2></div>
               </div>
-              <div class="panel-body" ng-controller="usr_control">
-                  <form name="registrationForm" id="loginform" class="form-horizontal" ng-submit="func_submit()" role="form">
+              <div class="panel-body" >
+                  <form id="loginform" class="form-horizontal" ng-submit="func_submit()" role="form">
                       {% csrf_token %}
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input name="account" id="account" type="text" class="form-control" ng-model="md.account"  value="" placeholder="username" useravail />
-                    <!-- <p ng-show="registrationForm.account.$dirty && registrationForm.account.$error.unique"> -->
-                    <p><<{registrationForm.account.$error}>></p>
-                    <span class="alert" ng-show="registrationForm.account.$dirty && registrationForm.account.$error.unique">
-                      User name is not available
-                    </span>
+                    <input id="login-username" type="text" class="form-control" ng-model="md.account" name="account" value="" placeholder="username">
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>

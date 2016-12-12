@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAdminUser
 from snippets.predict import prediction
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
 
 renderer_classes = [TemplateHTMLRenderer]
 template_name = 'index.html'
@@ -63,6 +64,15 @@ def result(name):
         return True
     return False
 
+
+class Checkuser(APIView):
+    def get(self,request, account, format=None):
+        queryset = Users.objects.filter(account=account).count()
+        print(queryset)
+        if queryset>0:
+            return Response(status=400)
+        else:
+            return Response("yes,you can",status=201)
 
 class UserList(generics.ListCreateAPIView):
     model = Users
