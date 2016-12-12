@@ -77,7 +77,11 @@
           <header class="centered">
               <h1>Travel Oracle</h1>
               <p>Your Private travel guide</p>
+<<<<<<< HEAD
           </header>
+=======
+
+>>>>>>> c8a2e226cdcd0a3eb36cc54ee97350643fbc35b8
               {% if username %}
                   <h2>Hello, {{ username }}</h2>
               {% endif %}
@@ -86,7 +90,7 @@
           <a href="logout" class="btn btn-default animated swing"> Logout!</a>
               {% else %}
               <a href="sign" class="btn btn-default animated swing"> Log In</a>
-              <a href="login" class="btn btn-default animated swing"> TRY ME!</a> 
+              <a href="register" class="btn btn-default animated swing"> TRY ME!</a>
           {% endif %}
 
       </div>
@@ -105,7 +109,7 @@
                 <div class="spacer"></div>
               <p class="section-subtitle">The places you will definitely like! </p>
           </header>
-     
+
         <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
           <ul class="nav nav-pills center-pills grid-controls">
             <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
@@ -119,7 +123,7 @@
             {% endif %}
           </ul>
         </div>
-      
+
         <div>
           <ul id="grid" class="grid-wrapper">
               <li class="mix US" >
@@ -168,44 +172,21 @@
               <h3><p class="contact-info"> Want to take a trip and don't know where to go?  </p>
               <p class="contact-info"> Worry not! </p>
               <p class="contact-info"> Our app does it for you! </p>
+<<<<<<< HEAD
               <p class="contact-info"> All you need to do is <b>Sign Up!</b></a></p></h3>  
           </header>              
+=======
+              {% if not username %}
+              <p class="contact-info"> All you need to do is </p></h3>
+              <h2><a href="#page-welcome"> Sign Up!</a></h2>
+              {% endif %}
+          </header>
+>>>>>>> c8a2e226cdcd0a3eb36cc54ee97350643fbc35b8
       </div>
   </div>
 
 </section><!-- About us ends here -->
- 
 
-
-    <script>
-
-// var app= angular.module("DestinationApp", []);
-//     app.config(function($interpolateProvider) {
-//     $interpolateProvider.startSymbol('[[');
-//     $interpolateProvider.endSymbol(']]');
-//   });
-//     // app.config(['$httpProvider', function($httpProvider) {
-//     //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
-//     // }]);
-// app.controller('DestinationController', function($scope, $http) {
-//       $scope.data = [
-//       {}
-//       ];
-//       $http({
-//           method : "GET",
-//           url : "http://127.0.0.1:8000/users/loc/{{ username }}"
-//       }).then(function mySucces(response) {
-//           $scope.data=response.data;
-//           console.log(response.data);
-//       }, function myError(response) {
-//           console.log("http GET 404");
-//       });
-
-
-// });
-
-</script>
-<!-- <script src={% static  "js/modernizr-2.6.2.min.js" %}></script> -->
 
 <script src={% static "js/bootstrap.min.js" %}></script>
 
