@@ -120,9 +120,9 @@ ngModel.$setValidity('unique', true);
             url : addr+"users/",
             data: key1
           }).then(function mySucces(response) {
-              window.alert(response.data);
+              // window.alert(response.data);
             console.log(response.data);
-            // window.location ="/"
+            window.location ="/"
           }, function myError(response) {
             window.alert("error:" + response.data);
           });

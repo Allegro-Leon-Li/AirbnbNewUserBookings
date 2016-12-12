@@ -70,7 +70,7 @@
           <div id="loginbox" class="mainbox col-xs-12 col-sm-6 animated zoomInDown">
             <div class="panel white-alpha-90" >
               <div class="panel-heading">
-                <div class="panel-title text-center"><h2>Just One Last Step !</h2></div>
+                <div class="panel-title text-center"><h2>Just One Step Sign Up!</h2></div>
               </div>
               <div class="panel-body" ng-controller="usr_control">
                   <form name="registrationForm" id="loginform" class="form-horizontal" ng-submit="func_submit()" role="form">
@@ -79,7 +79,6 @@
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input name="account" id="account" type="text" class="form-control" ng-model="md.account"  value="" placeholder="username" useravail />
                     <!-- <p ng-show="registrationForm.account.$dirty && registrationForm.account.$error.unique"> -->
-                    <p><<{registrationForm.account.$error}>></p>
                     <span class="alert" ng-show="registrationForm.account.$dirty && registrationForm.account.$error.unique">
                       User name is not available
                     </span>

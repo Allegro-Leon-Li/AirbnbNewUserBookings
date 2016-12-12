@@ -6,7 +6,6 @@ from .views import UserList, UserDetail, LocationDetail, Checkuser
 urlpatterns = [
 
     url(r'^test$', views.test, name="test"),
-    # url(r'^sign$', 'django.contrib.auth.views.login', name="signin"),
     # url(r'^usersloc/(?P<account_in>\w+)$', views.userinfo),
     url(r'^$', views.index, name="index"),
     url(r'^register$', views.register, name="register"),
