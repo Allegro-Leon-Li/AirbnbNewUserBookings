@@ -14,16 +14,20 @@ html, body {
     color:#757575;
 }
 
-img { 
+img {
     max-width: 100%;
 }
 
 a:link,a:visited {
     outline: 0;
+    color: white;
+    text-decoration: underline;
 }
 
 a:hover,a:active {
-    text-decoration: none;
+    outline: 0;
+    color: cadetblue;
+    text-decoration: underline;
 }
 
 a img {
@@ -58,23 +62,23 @@ h1,h2,h3,h4,h5,h6{
     padding: 0;
     list-style: none;
     display: inline-block;
-    float:none;
+    float: none;
     font-size: 1em;
     font-weight: bold;
 }
 
-.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
 background-color: transparent;
 }
 
-.navbar-default .navbar-nav>.active>a, 
-.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     background: none;
 }
 /* ==========================================================================
-  Layout 
+  Layout
    ========================================================================== */
 
 #page-welcome{
@@ -128,7 +132,7 @@ background-color: transparent;
     width:225px;
     height:225px;
     margin: 0 20px 20px 0;
-   
+
 }
 
 
@@ -156,16 +160,28 @@ background-color: transparent;
 }
 
 #page-contact{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
     padding: 75px 0;
 }
 
 #page-contact .contact-info p{
-    font-size:1.2em;
+    font-size:1.8em;
+    color:#fff;
+}
+
+#page-contact a{
+    outline: 0;
+    color: white;
+    text-decoration: underline;
 }
 
 
 /* ==========================================================================
-   Portfolio   
+   Portfolio
    ========================================================================== */
 
 #grid-controls-wrapper{
@@ -175,8 +191,8 @@ background-color: transparent;
 
 }
 
-.center-pills { 
-    display: inline-block; 
+.center-pills {
+    display: inline-block;
 }
 #grid .mix{
     width: 200px;
@@ -214,12 +230,12 @@ background-color: transparent;
     padding-top: 30%;
 }
 
- 
- 
+
+
 .isotope-item {
     z-index: 2;
 }
- 
+
 .isotope-hidden.isotope-item {
     pointer-events: none;
     z-index: 1;
@@ -234,7 +250,7 @@ background-color: transparent;
        -o-transition-duration: 0.8s;
           transition-duration: 0.8s;
 }
- 
+
 .isotope {
   -webkit-transition-property: height, width;
      -moz-transition-property: height, width;
@@ -242,7 +258,7 @@ background-color: transparent;
        -o-transition-property: height, width;
           transition-property: height, width;
 }
- 
+
 .isotope .isotope-item {
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
@@ -250,9 +266,9 @@ background-color: transparent;
        -o-transition-property:      -o-transform, opacity;
           transition-property:         transform, opacity;
 }
- 
+
 /**** disabling Isotope CSS3 transitions ****/
- 
+
 .isotope.no-transition,
 .isotope.no-transition .isotope-item,
 .isotope .isotope-item.no-transition {
@@ -276,7 +292,7 @@ background-color: transparent;
     left: 20px;
     position: fixed;
     top: 20px;
-    width: 32px; 
+    width: 32px;
     z-index: 0;
 }
 
@@ -342,7 +358,7 @@ background-color: transparent;
     left: 0;
     opacity: 0.3;
 }
-.next:hover, 
+.next:hover,
 .prev:hover{opacity: 1;}
 
 /* ==========================================================================
@@ -391,7 +407,7 @@ background-color: transparent;
     background:transparent;
     position: relative;
     color: #fff;
-    font-size: 1em;
+    font-size: 2em;
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;
@@ -444,7 +460,7 @@ label.valid{
 
 }
 /* ==========================================================================
-   Charts   
+   Charts
    ========================================================================== */
 .chart {
   position: relative;
@@ -508,13 +524,13 @@ label.valid{
     -webkit-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;
     -o-transition-duration: 0.8s;
-    transition-duration: 0.8s;  
+    transition-duration: 0.8s;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
     transition-property: transform;
 }
-.btn.btn-clear:hover, 
+.btn.btn-clear:hover,
 .btn.btn-clear.selected{
     background: #fff;
     -webkit-transform:rotate(360deg);
@@ -581,7 +597,7 @@ label.valid{
 }
 
 @media  (max-width: 479px) {
-    
+
     #page-welcome header h1 {
         font-size: 2em;
     }
@@ -610,8 +626,8 @@ label.valid{
           #page-profile .profile{
     margin:0 auto 20px auto;
   }
-  
-   
+
+
 
 }
 

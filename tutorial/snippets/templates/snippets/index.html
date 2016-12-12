@@ -28,7 +28,7 @@
      <link rel="stylesheet" href={% static "css/colors/orange.css" %}>
      <link rel="stylesheet" href={% static "css/colors/green.css" %}>
      <!-- Feature detection -->
-            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
      <script src={% static "js/jquery-1.10.2.min.js" %}></script>
      <script src={% static "js/jquery.scrollTo.js" %}></script>
 <script src={% static "js/jquery.nav.js" %}></script>
@@ -59,6 +59,7 @@
         <ul class="nav navbar-nav" id="main-menu">
           <li><a href="#page-welcome">Home</a></li>
           <li><a href="#page-portfolio">Countries</a></li>
+          <li><a href="#page-contact">About Us</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -75,18 +76,20 @@
       <div class="row">
           <header class="centered">
               <h1>Travel Oracle</h1>
-              <p>Your Pravite travel guide</p>
+              <p>Your Private travel guide</p>
+
               {% if username %}
                   <h2>Hello, {{ username }}</h2>
               {% endif %}
           </header>
           {% if username %}
 
-          <a href="logout" class="btn btn-default"> Logout!</a>
+          <a href="logout" class="btn btn-default animated swing"> Logout!</a>
               {% else %}
-              <a href="sign" class="btn btn-default"> Log In</a>
-              <a href="register" class="btn btn-default"> Give it a try!</a>
+              <a href="sign" class="btn btn-default animated swing"> Log In</a>
+              <a href="register" class="btn btn-default animated swing"> TRY ME!</a>
           {% endif %}
+
       </div>
   </div>
 
@@ -101,9 +104,9 @@
           <header class="section-header">
               <h2 class="section-title"><span>Countries</span></h2>
                 <div class="spacer"></div>
-              <p class="section-subtitle">the places you will definitely like! </p>
+              <p class="section-subtitle">The places you will definitely like! </p>
           </header>
-     
+
         <div id="grid-controls-wrapper" ng-app="DestinationApp" ng-controller="DestinationController">
           <ul class="nav nav-pills center-pills grid-controls">
             <li class="active filter"><a href="javascript:void(0)" data-filter="*">All</a></li>
@@ -117,7 +120,7 @@
             {% endif %}
           </ul>
         </div>
-      
+
         <div>
           <ul id="grid" class="grid-wrapper">
               <li class="mix US" >
@@ -155,38 +158,27 @@
       </div>
   </div>
 </section><!-- portfolio ends -->
- 
 
+<!-- About Us -->
+<section id="page-contact" class="page-contact">
+    <div class="container">
+      <div class="row">
+         <header class="section-header">
+              <h2 class="section-title"><span>About Us</span></h2>
+                <div class="spacer"></div>
+              <h3><p class="contact-info"> Want to take a trip and don't know where to go?  </p>
+              <p class="contact-info"> Worry not! </p>
+              <p class="contact-info"> Our app does it for you! </p>
+              {% if not username %}
+              <p class="contact-info"> All you need to do is </p></h3>
+              <h2><a href="#page-welcome"> Sign Up!</a></h2>
+              {% endif %}
+          </header>
+      </div>
+  </div>
 
-    <script>
+</section><!-- About us ends here -->
 
-// var app= angular.module("DestinationApp", []);
-//     app.config(function($interpolateProvider) {
-//     $interpolateProvider.startSymbol('[[');
-//     $interpolateProvider.endSymbol(']]');
-//   });
-//     // app.config(['$httpProvider', function($httpProvider) {
-//     //   $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
-//     // }]);
-// app.controller('DestinationController', function($scope, $http) {
-//       $scope.data = [
-//       {}
-//       ];
-//       $http({
-//           method : "GET",
-//           url : "http://127.0.0.1:8000/users/loc/{{ username }}"
-//       }).then(function mySucces(response) {
-//           $scope.data=response.data;
-//           console.log(response.data);
-//       }, function myError(response) {
-//           console.log("http GET 404");
-//       });
-
-
-// });
-
-</script>
-<!-- <script src={% static  "js/modernizr-2.6.2.min.js" %}></script> -->
 
 <script src={% static "js/bootstrap.min.js" %}></script>
 
