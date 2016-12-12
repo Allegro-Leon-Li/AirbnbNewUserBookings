@@ -78,12 +78,15 @@
               <h1>Travel Oracle</h1>
               <p>Your Private travel guide</p>
 
+
           </header>
+
+
 
               {% if username %}
                   <h2>Hello, {{ username }}</h2>
               {% endif %}
-          </header>
+        
           {% if username %}
           <a href="logout" class="btn btn-default animated swing"> Logout!</a>
               {% else %}
@@ -145,13 +148,13 @@
               <li class="mix PT">
                 <div class="overlay"><i>Oporto, Portugal</i></div><img src={% static "img/portfolio/small/pt1.jpg" %} alt="" class="thumbnail"></li>
               <li class="mix other">
-                <div class="overlay"><i>Beijing, China</i></div><img src={% static "img/portfolio/small/other1.jpg" %} alt="" class="thumbnail"></li>
+                <div class="overlay"><i>Kyoto, Japan</i></div><img src={% static "img/portfolio/small/other1.jpg" %} alt="" class="thumbnail"></li>
               <li class="mix NL">
                 <div class="overlay"><i>Zaanse Schans, Netherlands</i></div><img src={% static "img/portfolio/small/nl1.jpg" %} alt="" class="thumbnail"></li>
               <li class="mix US">
                 <div class="overlay"><i>San Francisco, USA</i></div><img src={% static "img/portfolio/small/us2.jpg" %} alt="" class="thumbnail"></li>
               <li class="mix other">
-                <div class="overlay"><i>Punakha Dzong Monastery, Bhutan</i></div><img src={% static "img/portfolio/small/other2.jpg" %} alt="" class="thumbnail"></li>
+                <div class="overlay"><i>Beijing, China</i></div><img src={% static "img/portfolio/small/other2.jpg" %} alt="" class="thumbnail"></li>
               <li class="mix FR">
                 <div class="overlay"><i>Paris, France</i></div><img src={% static "img/portfolio/small/fr2.jpg" %} alt="" class="thumbnail"></li>
           </ul>
@@ -169,13 +172,14 @@
                 <div class="spacer"></div>
               <h3><p class="contact-info"> Want to take a trip and don't know where to go?  </p>
               <p class="contact-info"> Worry not! </p>
+
               <p class="contact-info"> Our app does it for you! </p> </h3>
               
-
               {% if not username %}
               <h3><p class="contact-info"> All you need to do is: </p></h3>
               <h2><a href="#page-welcome"> Sign Up!</a></h2>
               {% endif %}
+
          </header>
 
       </div>
