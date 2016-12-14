@@ -1,5 +1,6 @@
 # TravelRecommendationSys
-This repository is for EC601 class project. The topic and database is selected from kaggle.com
+This repository is for EC601 class project. The topic and database is selected from kaggle.com  
+#####If you are not building the django project, you can visit our web at: http://django.us-east-1.elasticbeanstalk.com/
 To get the website running, it's preferable to have Python 3.5 installed, along with pip. Here are some instructions:  
 1. Install Django by 'pip install django', or by some other methods: https://docs.djangoproject.com/en/1.10/topics/install/   
 2. Install Django-Rest-Framework by 'pip install djangorestframework'. ref: http://www.django-rest-framework.org/#installation  
