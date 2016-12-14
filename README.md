@@ -1,7 +1,8 @@
 # TravelRecommendationSys -- Travel Oracle
 This repository is for EC601 class project. The topic and database is selected from kaggle.com 
 #### Developed by:
-Ang Li, Tianyu Gu, Vrushali Mahajan
+Ang Li, Tianyu Gu, Vrushali Mahajan  
+#### Instruction:
 #####  If you are not building the django project, you can visit our web at: http://django.us-east-1.elasticbeanstalk.com/
 #####  To get the website running, it's preferable to have Python 3.5 installed, along with pip. Here are some instructions:  
 1. Install **Django** by 'pip install django', or by some other methods: https://docs.djangoproject.com/en/1.10/topics/install/   
