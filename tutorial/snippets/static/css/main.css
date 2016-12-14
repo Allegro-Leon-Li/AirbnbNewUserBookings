@@ -20,13 +20,13 @@ img {
 
 a:link,a:visited {
     outline: 0;
-    color: white;
+    color: darkcyan;
     text-decoration: underline;
 }
 
 a:hover,a:active {
     outline: 0;
-    color: white;
+    color: darkcyan;
     text-decoration: underline;
 }
 
