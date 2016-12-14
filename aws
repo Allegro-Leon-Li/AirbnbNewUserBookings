@@ -1,0 +1,18 @@
+Travel Oracle: information about aws building
+========================================================
+1. This version (aaron branch) is the cuurent version built on aws, the url is:
+http://django.us-east-1.elasticbeanstalk.com/
+welcome to check and further work on it !
+
+2. information about server:
+	server: elastic beanstalk using ec2 on AWS Linux OS based on CentOs
+	database: aws RDS database with mysql
+
+   1). we use SSH to login the server and MYSQLbenchmark to check the database.
+   2). If you would like to check them, please contact me so that I can add you into the security group, otherweise the access from public is prohibited.  	
+
+3. changes from master branch:
+	1) two more config folders: the settings of aws can be found in .elasticbeanstalk and .ebextensions folders, which by default are hidden.  
+	2) the settings of database have been changed to aws RDS accrodingly, which can be found in ./tutorial/tutorial/settings.
+
+=========================================================
